@@ -82,7 +82,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PostBuildEvent>cd "$(TargetDir)"
-"$(SolutionDir)packages\ILRepack.1.26.0\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) ICSharpCode.SharpZipLib.dll Microsoft.Web.XmlTransform.dll Splat.dll Squirrel.dll Octokit.dll NuGet.Squirrel.dll
+"$(SolutionDir)packages\ILRepack.1.26.0\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) Microsoft.Web.XmlTransform.dll Splat.dll Squirrel.dll Octokit.dll NuGet.Squirrel.dll
 del "$(TargetFileName)"
 ren "$(TargetFileName).tmp" "$(TargetFileName)"</PostBuildEvent>
   </PropertyGroup>
