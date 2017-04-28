@@ -36,7 +36,7 @@ namespace Squirrel
         /// will return values from 0-100 and Complete, or Throw</param>
         /// <returns>An UpdateInfo object representing the updates to install.
         /// </returns>
-        Task<UpdateInfo> CheckForUpdate(bool ignoreDeltaUpdates = false, Action<int> progress = null);
+        Task<UpdateInfo> CheckForUpdate(bool ignoreDeltaUpdates = false, Action<int> progress = null, string releasesExtension = "");
 
         /// <summary>
         /// Download a list of releases into the local package directory.
@@ -135,7 +135,7 @@ namespace Squirrel
 
     public static class EasyModeMixin
     {
-        public static async Task<ReleaseEntry> UpdateApp(this IUpdateManager This, Action<int> progress = null)
+        public static async Task<ReleaseEntry> UpdateApp(this IUpdateManager This, Action<int> progress = null, string releasesExtension = "")
         {
             progress = progress ?? (_ => {});
             This.Log().Info("Starting automatic update");
@@ -146,7 +146,7 @@ namespace Squirrel
             var updateInfo = default(UpdateInfo);
 
             try {
-                updateInfo = await This.ErrorIfThrows(() => This.CheckForUpdate(ignoreDeltaUpdates, x => progress(x / 3)),
+                updateInfo = await This.ErrorIfThrows(() => This.CheckForUpdate(ignoreDeltaUpdates, x => progress(x / 3) ),
                     "Failed to check for updates");
 
                 await This.ErrorIfThrows(() =>
