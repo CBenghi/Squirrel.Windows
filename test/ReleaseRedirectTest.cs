@@ -25,7 +25,7 @@ namespace Squirrel
                 {
                     var ret = um.UpdateApp(releasesExtension: ".php");
                     var t = ret.Result;
-                }               
+                }
             }
         }
     }
