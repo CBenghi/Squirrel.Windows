@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\Squirrel\Squirrel.csproj" />
-    <ProjectReference Include="..\vendor\nuget\src\Core\Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +18,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="NuGet.Core" Version="2.14.0" />
     <PackageReference Include="xunit" Version="2.0.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.0.0" PrivateAssets="All" />
   </ItemGroup>
