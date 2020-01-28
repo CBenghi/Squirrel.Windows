@@ -35,8 +35,8 @@ NetVersion CFxHelper::GetRequiredDotNetVersion()
 	if (resourceFlag.Compare(L"net471") == 0) return NetVersion::net471;
 	if (resourceFlag.Compare(L"net472") == 0) return NetVersion::net472;
 
-	//Default to standard net45
-	return NetVersion::net45;
+	//Default to standard net47
+	return NetVersion::net47;
 }
 
 bool CFxHelper::IsDotNetInstalled(NetVersion required)

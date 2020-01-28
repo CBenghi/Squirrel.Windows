@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <version>1.9.1.cb001</version>
+    <version>1.9.2-cb001</version>
     <authors>GitHub, Claudio Benghi</authors>
     <owners>Anaïs Betts</owners>
-    <licenseUrl>https://github.com/squirrel/Squirrel.Windows/blob/master/COPYING</licenseUrl>
+    <license type="expression">MIT</license>
     <projectUrl>https://github.com/squirrel/Squirrel.Windows</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/Squirrel/Squirrel.Windows/master/docs/artwork/Squirrel-Logo-Square.png</iconUrl>
 
@@ -23,19 +23,19 @@
     <copyright>Copyright GitHub© 2017</copyright>
   </metadata>
   <files>
-    <file src="Squirrel\bin\Release\Squirrel.*" target="lib\Net45" />
-    <file src="Squirrel\bin\Release\ICSharpCode.*" target="lib\Net45" />
+    <file src="..\build\Release\net45\Squirrel.*" target="lib\Net45" />
+    <file src="..\build\Release\net45\ICSharpCode.*" target="lib\Net45" />
     <file src="squirrel.windows.props" target="build" />
     <file src="squirrel.windows.targets" target="build" />
-    <file src="Setup\bin\Release\Setup.exe" target="tools" />
-    <file src="WriteZipToSetup\bin\Release\WriteZipToSetup.exe" target="tools" />
-    <file src="StubExecutable\bin\Release\StubExecutable.exe" target="tools" />
-    <file src="Update\bin\Release\Update.exe" target="tools\Squirrel.exe" />
-    <file src="Update\bin\Release\Update-Mono.exe" target="tools\Squirrel-Mono.exe" />
-    <file src="Update\bin\Release\Update.com" target="tools\Squirrel.com" />
-    <file src="SyncReleases\bin\Release\SyncReleases.exe" target="tools" />
-    <file src="Update\signtool.exe" target="tools\signtool.exe" />
-    <file src="Update\rcedit.exe" target="tools\rcedit.exe" />
+    <file src="..\build\Release\Win32\Setup.exe" target="tools" />
+    <file src="..\build\Release\Win32\WriteZipToSetup.exe" target="tools" />
+    <file src="..\build\Release\Win32\StubExecutable.exe" target="tools" />
+    <file src="..\build\Release\net45\Update.exe" target="tools\Squirrel.exe" />
+    <file src="..\build\Release\net45\Update-Mono.exe" target="tools\Squirrel-Mono.exe" />
+    <file src="..\build\Release\net45\Update.com" target="tools\Squirrel.com" />
+    <file src="..\build\Release\net45\SyncReleases.exe" target="tools" />
+    <file src="..\build\Release\net45\signtool.exe" target="tools\signtool.exe" />
+    <file src="..\build\Release\net45\rcedit.exe" target="tools\rcedit.exe" />
     <file src="..\vendor\wix\*" target="tools" />
     <file src="..\vendor\7zip\*" target="tools" />
   </files>

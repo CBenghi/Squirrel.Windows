@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\vendor\nuget\src\Core\Core.csproj" />
     <ProjectReference Include="..\Squirrel\Squirrel.csproj" />
   </ItemGroup>
 
@@ -26,9 +25,10 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <PostBuildEvent>
       cd "$(TargetDir)"
-      "$(NuGetPackageRoot)ilrepack\1.26.0\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) SharpCompress.dll Microsoft.Web.XmlTransform.dll Splat.dll Squirrel.dll Octokit.dll NuGet.Squirrel.dll
+      "$(NuGetPackageRoot)ilrepack\1.26.0\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) SharpCompress.dll Microsoft.Web.XmlTransform.dll Splat.dll Squirrel.dll Octokit.dll NuGet.Core.dll
       del "$(TargetFileName)"
       ren "$(TargetFileName).tmp" "$(TargetFileName)"
+      echo Repacked "$(TargetDir)\$(TargetFileName)"
     </PostBuildEvent>
   </PropertyGroup>
 </Project>

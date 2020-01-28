@@ -35,9 +35,10 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <PostBuildEvent>
       cd "$(TargetDir)"
-      "$(NuGetPackageRoot)ilrepack\1.26.0\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) Microsoft.Web.XmlTransform.dll Splat.dll DeltaCompressionDotNet.dll DeltaCompressionDotNet.MsDelta.dll Squirrel.dll NuGet.Squirrel.dll Mono.Cecil.dll SharpCompress.dll
+      "$(NuGetPackageRoot)ilrepack\1.26.0\tools\ILRepack.exe" /internalize /out:$(TargetFileName).tmp $(TargetFileName) Microsoft.Web.XmlTransform.dll Splat.dll DeltaCompressionDotNet.dll DeltaCompressionDotNet.MsDelta.dll Squirrel.dll NuGet.Core.dll Mono.Cecil.dll SharpCompress.dll
       del "$(TargetFileName)"
       ren "$(TargetFileName).tmp" "$(TargetFileName)"
+      echo Repacked "$(TargetFileName)"
     </PostBuildEvent>
   </PropertyGroup>
 
