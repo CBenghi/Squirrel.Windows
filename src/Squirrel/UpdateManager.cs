@@ -26,13 +26,16 @@ namespace Squirrel
         readonly string applicationName;
         readonly IFileDownloader urlDownloader;
         readonly string updateUrlOrPath;
+        private readonly string _releasesFileExtension = "";
 
         IDisposable updateLock;
 
         public UpdateManager(string urlOrPath, 
             string applicationName = null,
             string rootDirectory = null,
-            IFileDownloader urlDownloader = null)
+            IFileDownloader urlDownloader = null,
+            string releasesFileExtension = ""
+            )
         {
             Contract.Requires(!String.IsNullOrEmpty(urlOrPath));
             Contract.Requires(!String.IsNullOrEmpty(applicationName));
@@ -40,6 +43,7 @@ namespace Squirrel
             updateUrlOrPath = urlOrPath;
             this.applicationName = applicationName ?? UpdateManager.getApplicationName();
             this.urlDownloader = urlDownloader ?? new FileDownloader();
+            _releasesFileExtension = releasesFileExtension;
 
             if (rootDirectory != null) {
                 this.rootAppDirectory = Path.Combine(rootDirectory, this.applicationName);
@@ -54,7 +58,7 @@ namespace Squirrel
             var checkForUpdate = new CheckForUpdateImpl(rootAppDirectory);
 
             await acquireUpdateLock();
-            return await checkForUpdate.CheckForUpdate(intention, Utility.LocalReleaseFileForAppDir(rootAppDirectory), updateUrlOrPath, ignoreDeltaUpdates, progress, urlDownloader);
+            return await checkForUpdate.CheckForUpdate(intention, Utility.LocalReleaseFileForAppDir(rootAppDirectory), updateUrlOrPath, ignoreDeltaUpdates, progress, urlDownloader, releasesFileExtension:_releasesFileExtension);
         }
 
         public async Task DownloadReleases(IEnumerable<ReleaseEntry> releasesToDownload, Action<int> progress = null)

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <version>1.9.2-cb001</version>
+    <version>1.9.2-cb003</version>
     <authors>GitHub, Claudio Benghi</authors>
     <owners>Anaïs Betts</owners>
     <license type="expression">MIT</license>

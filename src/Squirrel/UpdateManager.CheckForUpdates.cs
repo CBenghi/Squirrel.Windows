@@ -26,7 +26,9 @@ namespace Squirrel
                 string updateUrlOrPath,
                 bool ignoreDeltaUpdates = false,
                 Action<int> progress = null,
-                IFileDownloader urlDownloader = null)
+                IFileDownloader urlDownloader = null,
+                string releasesFileExtension = ""
+                )
             {
                 progress = progress ?? (_ => { });
 
@@ -68,7 +70,9 @@ namespace Squirrel
                 retry:
 
                     try {
-                        var uri = Utility.AppendPathToUri(new Uri(updateUrlOrPath), "RELEASES");
+                        var resFile = "RELEASES" + releasesFileExtension;
+
+                        var uri = Utility.AppendPathToUri(new Uri(updateUrlOrPath), resFile);
 
                         if (latestLocalRelease != null) {
                             uri = Utility.AddQueryParamsToUri(uri, new Dictionary<string, string> {

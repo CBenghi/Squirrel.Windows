@@ -54,6 +54,8 @@ namespace Squirrel.Tests
             }
         }
 
+        
+
         public class UpdateLocalReleasesTests
         {
             [Fact]
@@ -331,6 +333,22 @@ namespace Squirrel.Tests
                     Assert.Equal(expected, fixture.CurrentlyInstalledVersion(input));
                 }
             }
+
+            [Fact]
+            public async Task CanHandleReleasesFileExtension()
+            {
+                var updateSource = "http://www.overarching.it/dload/XbimXplorer5";
+                var ext = ".php";
+                
+                using (var mgr = new UpdateManager(updateSource, "theApp", releasesFileExtension: ext))
+                {
+                    var t = await mgr.UpdateApp();
+                    mgr.Dispose();
+                    if (EqualityComparer<ReleaseEntry>.Default.Equals(t, default(ReleaseEntry)))
+                        return;
+                }
+            }
+            
         }
     }
 }
